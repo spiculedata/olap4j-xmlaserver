@@ -14,8 +14,8 @@ import mondrian.xmla.XmlaRequest;
 
 import org.olap4j.xmla.server.impl.Util;
 
-import org.apache.commons.dbcp.BasicDataSource;
-import org.apache.commons.dbcp.DelegatingConnection;
+import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.commons.dbcp2.DelegatingConnection;
 import org.apache.log4j.Logger;
 
 import org.olap4j.OlapConnection;
@@ -283,7 +283,7 @@ public class Olap4jXmlaServlet extends DefaultXmlaServlet {
                     bds.setUrl(olap4jDriverConnectionString);
                     bds.setPoolPreparedStatements(false);
                     bds.setMaxIdle(maxPerUserConnectionCount);
-                    bds.setMaxActive(maxPerUserConnectionCount);
+                    bds.setMaxTotal(maxPerUserConnectionCount);
                     bds.setMinEvictableIdleTimeMillis(
                         idleConnectionsCleanupTimeoutMs);
                     bds.setAccessToUnderlyingConnectionAllowed(true);
