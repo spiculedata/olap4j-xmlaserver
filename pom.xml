@@ -39,6 +39,19 @@
     <servlet-api.version>6.0.0</servlet-api.version>
   </properties>
 
+  <!-- Resolve the org.olap4j:olap4j:1.2.0-spicule-1 dependency from GitHub Packages.
+       Auth: the id "github" matches the <server> wired up by actions/setup-java in
+       .github/workflows/publish.yml. For local builds, add a <server id="github">
+       entry to ~/.m2/settings.xml with a PAT carrying read:packages. -->
+  <repositories>
+    <repository>
+      <id>github</id>
+      <url>https://maven.pkg.github.com/spiculedata/olap4j</url>
+      <releases><enabled>true</enabled></releases>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+  </repositories>
+
   <dependencies>
     <dependency>
       <groupId>org.olap4j</groupId>
